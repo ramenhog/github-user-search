@@ -5,7 +5,15 @@ const initialState = {
 };
 
 const searchReducer = (state = initialState, action) => {
-  return state;
+  switch (action.type) {
+    case "SEARCH_SUBMIT_SUCCESS": {
+      console.log("yay", action.searchQuery);
+      return state;
+    }
+    default: {
+      return state;
+    }
+  }
 };
 
 export default searchReducer;
