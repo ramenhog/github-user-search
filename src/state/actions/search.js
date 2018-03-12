@@ -1,4 +1,5 @@
 import axios from "axios";
+import { history } from "../configureStore";
 
 export const searchRequested = searchQuery => {
   return dispatch => {
@@ -6,6 +7,10 @@ export const searchRequested = searchQuery => {
       .get(`https://api.github.com/search/users?q=${searchQuery}`)
       .then(({ data: { items: results } }) => {
         dispatch(searchRequestSucceeded(results));
+        history.push({
+          pathname: "/results",
+          search: `?q=${searchQuery}`
+        });
       })
       .catch(error => {
         console.log("ERROR", error);
