@@ -1,5 +1,7 @@
 const initialState = {
-  results: []
+  results: [],
+  searchQuery: "",
+  pagination: null
 };
 
 const searchReducer = (state = initialState, action) => {
