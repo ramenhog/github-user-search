@@ -7,8 +7,11 @@ const initialState = {
 const searchReducer = (state = initialState, action) => {
   switch (action.type) {
     case "SEARCH_SUBMIT_SUCCESS": {
-      console.log("yay", action.searchQuery);
-      return state;
+      const { results } = action;
+      return {
+        ...state,
+        results
+      };
     }
     default: {
       return state;
