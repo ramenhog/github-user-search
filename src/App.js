@@ -9,11 +9,13 @@ class App extends Component {
   render() {
     return (
       <Router history={history}>
-        <Switch>
-          <Route exact path="/" component={Search} />
-          <Route path="/results" component={SearchResults} />
-          {/*<Route path="/:username" component={UserProfile} />*/}
-        </Switch>
+        <div className="app">
+          <Switch>
+            <Route exact path="/" component={Search} />
+            <Route path="/results" component={SearchResults} />
+            {/*<Route path="/:username" component={UserProfile} />*/}
+          </Switch>
+        </div>
       </Router>
     );
   }
