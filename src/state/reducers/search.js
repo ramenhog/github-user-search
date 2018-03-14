@@ -8,14 +8,14 @@ const initialState = {
 const searchReducer = (state = initialState, action) => {
   switch (action.type) {
     case "SEARCH_REQUEST": {
-      const { searchQuery } = action;
+      const { searchQuery } = action.data;
       return {
         ...state,
         searchQuery
       };
     }
     case "SEARCH_REQUEST_SUCCESS": {
-      const { results, page, totalResults } = action;
+      const { results, page, totalResults } = action.data;
       return {
         ...state,
         results,

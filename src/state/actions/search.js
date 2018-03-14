@@ -5,7 +5,9 @@ export const searchRequested = (searchQuery, page = 1) => {
   return dispatch => {
     dispatch({
       type: "SEARCH_REQUEST",
-      searchQuery
+      data: {
+        searchQuery
+      }
     });
     const queryString = `?q=${searchQuery}&page=${page}`;
     axios
@@ -16,7 +18,6 @@ export const searchRequested = (searchQuery, page = 1) => {
         }
       })
       .then(({ data }) => {
-        console.log(data);
         const { items: results, total_count: totalResults } = data;
         dispatch(searchRequestSucceeded(results, page, totalResults));
         history.push({
@@ -33,8 +34,10 @@ export const searchRequested = (searchQuery, page = 1) => {
 export const searchRequestSucceeded = (results, page, totalResults) => {
   return {
     type: "SEARCH_REQUEST_SUCCESS",
-    results,
-    page,
-    totalResults
+    data: {
+      results,
+      page,
+      totalResults
+    }
   };
 };

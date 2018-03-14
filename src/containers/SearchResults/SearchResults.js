@@ -21,7 +21,7 @@ class SearchResults extends Component {
 
     if (thisSearch !== nextSearch) {
       const nextQuery = parse(nextSearch.substr(1));
-      searchRequested(nextQuery.q, parseInt(nextQuery.page));
+      searchRequested(nextQuery.q, parseInt(nextQuery.page, 10));
     }
   }
 
@@ -39,14 +39,14 @@ class SearchResults extends Component {
       <div>
         {prevPage > 0 ? (
           <div>
-            <Link to={`${paginationUrl}&page=${firstPage}`}>First page</Link>
-            <Link to={`${paginationUrl}&page=${prevPage}`}>Previous page</Link>
+            <Link to={`${paginationUrl}&page=${firstPage}`}>{firstPage}</Link>
+            <Link to={`${paginationUrl}&page=${prevPage}`}>&lt;</Link>
           </div>
         ) : null}
         {lastPage >= nextPage ? (
           <div>
-            <Link to={`${paginationUrl}&page=${nextPage}`}>Next page</Link>
-            <Link to={`${paginationUrl}&page=${lastPage}`}>Last page</Link>
+            <Link to={`${paginationUrl}&page=${nextPage}`}>&gt;</Link>
+            <Link to={`${paginationUrl}&page=${lastPage}`}>{lastPage}</Link>
           </div>
         ) : null}
         {results.map((result, i) => (
