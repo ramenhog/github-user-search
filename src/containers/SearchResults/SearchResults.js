@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { parse } from "qs";
-
+import { Link } from "react-router-dom";
 import Pagination from "../../components/Pagination";
 
 class SearchResults extends Component {
@@ -37,14 +37,18 @@ class SearchResults extends Component {
         <h1>Search Results:</h1>
         <div className="search-results__container">
           {results.map((result, i) => (
-            <div className="search-results__item" key={i}>
+            <Link
+              to={`/user/${result.login}`}
+              className="search-results__item"
+              key={i}
+            >
               <img
                 className="search-results__avatar"
                 src={result.avatar_url}
                 alt={result.login}
               />
               <h2>{result.login}</h2>
-            </div>
+            </Link>
           ))}
         </div>
         <Pagination
