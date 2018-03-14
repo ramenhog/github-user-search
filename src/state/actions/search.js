@@ -9,7 +9,12 @@ export const searchRequested = (searchQuery, page = 1) => {
     });
     const queryString = `?q=${searchQuery}&page=${page}`;
     axios
-      .get(`https://api.github.com/search/users${queryString}&per_page=50`)
+      .get(`https://api.github.com/search/users${queryString}&per_page=50`, {
+        auth: {
+          username: process.env.REACT_APP_GITHUB_USERNAME,
+          password: process.env.REACT_APP_GITHUB_TOKEN
+        }
+      })
       .then(({ data }) => {
         console.log(data);
         const { items: results, total_count: totalResults } = data;
