@@ -18,22 +18,23 @@ SearchForm = reduxForm({
 })(SearchForm);
 
 const Search = props => {
-  const { searchRequested } = props;
+  const { searchRequested, search: { page } } = props;
+
+  const handleSubmit = values => {
+    const { search: searchQuery } = values;
+    searchRequested(searchQuery, page);
+  };
   return (
     <div>
       <header>GITHUB USER SEARCH</header>
-      <SearchForm
-        onSubmit={values => {
-          searchRequested(values.search);
-        }}
-      />
+      <SearchForm onSubmit={handleSubmit} />
     </div>
   );
 };
 
 const mapStateToProps = state => {
   return {
-    searchQuery: state.search.searchQuery
+    search: state.search
   };
 };
 

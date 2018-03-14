@@ -4,8 +4,9 @@ import * as actions from "../../state/actions/search";
 import SearchResults from "./SearchResults";
 
 const mapStateToProps = state => {
+  const { search } = state;
   return {
-    results: state.search.results
+    search
   };
 };
 

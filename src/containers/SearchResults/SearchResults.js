@@ -1,20 +1,54 @@
 import React, { Component } from "react";
 import { parse } from "qs";
+import { Link } from "react-router-dom";
 
 class SearchResults extends Component {
   componentWillMount() {
-    const { location, searchRequested } = this.props;
+    const { location, searchRequested, history } = this.props;
     const query = parse(location.search.substr(1));
 
     if (query.q) {
-      searchRequested(query.q);
+      const pageNum = parseInt(query.page, 10);
+      searchRequested(query.q, pageNum);
+    } else {
+      history.push("/");
+    }
+  }
+
+  componentWillUpdate(nextProps) {
+    const { location: { search: nextSearch } } = nextProps;
+    const { location: { search: thisSearch }, searchRequested } = this.props;
+
+    if (thisSearch !== nextSearch) {
+      const nextQuery = parse(nextSearch.substr(1));
+      searchRequested(nextQuery.q, parseInt(nextQuery.page));
     }
   }
 
   render() {
-    const { results = [] } = this.props;
+    const {
+      search: { results = [], page, searchQuery, totalResults }
+    } = this.props;
+    const paginationUrl = `/results?q=${searchQuery}`;
+    const nextPage = page + 1;
+    const prevPage = page - 1;
+    const firstPage = 1;
+    const lastPage = Math.ceil(totalResults / 50);
+
     return (
       <div>
+        {prevPage > 0 ? (
+          <div>
+            <Link to={`${paginationUrl}&page=${firstPage}`}>First page</Link>
+            <Link to={`${paginationUrl}&page=${prevPage}`}>Previous page</Link>
+          </div>
+        ) : null}
+        {lastPage >= nextPage ? (
+          <div>
+            <Link to={`${paginationUrl}&page=${nextPage}`}>Next page</Link>
+            <Link to={`${paginationUrl}&page=${lastPage}`}>Last page</Link>
+          </div>
+        ) : null}
         {results.map((result, i) => (
           <div key={i}>
             <img src={result.avatar_url} width="200" />

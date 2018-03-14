@@ -1,16 +1,26 @@
 const initialState = {
   results: [],
   searchQuery: "",
-  pagination: null
+  page: 1,
+  totalResults: null
 };
 
 const searchReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "SEARCH_SUBMIT_SUCCESS": {
-      const { results } = action;
+    case "SEARCH_REQUEST": {
+      const { searchQuery } = action;
       return {
         ...state,
-        results
+        searchQuery
+      };
+    }
+    case "SEARCH_REQUEST_SUCCESS": {
+      const { results, page, totalResults } = action;
+      return {
+        ...state,
+        results,
+        page,
+        totalResults
       };
     }
     default: {
