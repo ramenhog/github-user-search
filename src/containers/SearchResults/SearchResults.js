@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { parse } from "qs";
 import { Link } from "react-router-dom";
 import Pagination from "../../components/Pagination";
+import Header from "../../components/Header";
 
 import "./SearchResults.scss";
 
@@ -36,6 +37,7 @@ class SearchResults extends Component {
 
     return (
       <div className="search-results">
+        <Header />
         <h1>Search Results:</h1>
         <div className="search-results__container">
           {results.map((result, i) => (
