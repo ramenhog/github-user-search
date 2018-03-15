@@ -1,5 +1,12 @@
-$background: none;
-
 .search-results {
-  background: $background;
+  &__container {
+    display: grid;
+
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  &__avatar {
+    display: block;
+    width: 100px;
+  }
 }
