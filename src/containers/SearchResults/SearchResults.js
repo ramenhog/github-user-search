@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { parse } from "qs";
 import { Link } from "react-router-dom";
 import Pagination from "../../components/Pagination";
+import styles from "./searchResults.scss";
 
 class SearchResults extends Component {
   componentWillMount() {
@@ -35,7 +36,7 @@ class SearchResults extends Component {
     return (
       <div className="search-results">
         <h1>Search Results:</h1>
-        <div className="search-results__container">
+        <div className={styles.results}>
           {results.map((result, i) => (
             <Link
               to={`/user/${result.login}`}
@@ -43,7 +44,7 @@ class SearchResults extends Component {
               key={i}
             >
               <img
-                className="search-results__avatar"
+                className={styles.avatar}
                 src={result.avatar_url}
                 alt={result.login}
               />

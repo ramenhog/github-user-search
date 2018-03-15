@@ -1,0 +1,14 @@
+.results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  background: red;
+
+  &:hover {
+    background: white;
+  }
+}
+
+.avatar {
+  display: block;
+  width: 100px;
+}
