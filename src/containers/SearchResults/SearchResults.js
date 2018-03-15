@@ -3,6 +3,8 @@ import { parse } from "qs";
 import { Link } from "react-router-dom";
 import Pagination from "../../components/Pagination";
 
+import "./SearchResults.scss";
+
 class SearchResults extends Component {
   componentWillMount() {
     const { location, searchRequested, history } = this.props;

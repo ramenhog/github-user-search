@@ -4,7 +4,7 @@ import Search from "./containers/Search";
 import SearchResults from "./containers/SearchResults";
 import UserProfile from "./containers/UserProfile";
 import { history } from "./state/configureStore";
-import "./App.css";
+import "./App.scss";
 
 class App extends Component {
   render() {
