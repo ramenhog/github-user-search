@@ -53,7 +53,11 @@ class UserProfile extends Component {
           <div>
             <h2>Repos:</h2>
             {repos.map((repo, i) => {
-              return <h3>{repo.name}</h3>;
+              return (
+                <div key={i}>
+                  <h3>{repo.name}</h3>
+                </div>
+              );
             })}
           </div>
         </div>
