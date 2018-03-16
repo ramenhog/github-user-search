@@ -1,38 +1,26 @@
+@import './styles/typography';
+
+:root {
+  --step-up-5: 2em;
+  --step-up-4: 1.7511em;
+  --step-up-3: 1.5157em;
+  --step-up-2: 1.3195em;
+  --step-up-1: 1.1487em;
+}
+
+html,
 body {
   padding: 0;
   margin: 0;
-  font-family: sans-serif;
+  font-family: 'Yantramanav', sans-serif;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
 }
 
-.app {
-  padding: 50px;
-}
+.container {
+  padding: 32px;
 
-.app-logo {
-  height: 80px;
-  animation: app-logo-spin infinite 20s linear;
-}
-
-.app-header {
-  height: 150px;
-  padding: 20px;
-  color: white;
-  background-color: #222;
-}
-
-.app-title {
-  font-size: 1.5em;
-}
-
-.app-intro {
-  font-size: large;
-}
-
-@keyframes app-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+  &--landing {
+    text-align: center;
   }
 }
