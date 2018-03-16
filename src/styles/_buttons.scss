@@ -1,0 +1,18 @@
+@import "./variables";
+
+@mixin button {
+  padding: 8px 24px;
+  background: $dark-gray;
+  color: white;
+  border-radius: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: 'Yantramanav', sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.button {
+  @include button;
+}

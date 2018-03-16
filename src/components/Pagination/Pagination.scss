@@ -1,0 +1,16 @@
+.pagination {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+
+  &__item {
+    margin: 0 16px;
+    font-weight: 500;
+    font-size: var(--step-up-1);
+  }
+
+  &__next {
+    grid-column: 2 / -1;
+    justify-self: right;
+  }
+}

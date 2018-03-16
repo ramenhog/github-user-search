@@ -3,8 +3,9 @@ import { Field, reduxForm } from "redux-form";
 import "./SearchForm.scss";
 
 let SearchForm = props => {
+  const { searchQuery = "", handleSubmit } = props;
   return (
-    <form className="search-form" onSubmit={props.handleSubmit}>
+    <form className="search-form" onSubmit={handleSubmit}>
       <Field
         name="search"
         type="text"
@@ -12,7 +13,12 @@ let SearchForm = props => {
         className="search-form__text"
         placeholder="Search by username"
       />
-      <button type="submit" className="search-form__submit">
+      <button
+        type="submit"
+        className={`button search-form__submit ${
+          props.isButtonHidden ? "visually-hidden" : ""
+        }`}
+      >
         Submit
       </button>
     </form>

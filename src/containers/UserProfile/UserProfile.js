@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import Header from "../../components/Header";
+
+import "./UserProfile.scss";
 
 class UserProfile extends Component {
   componentDidMount() {
@@ -10,7 +13,13 @@ class UserProfile extends Component {
   renderProfile() {
     const {
       match: { params: { username } },
-      profile: { user: { avatar_url, name, blog, bio, html_url }, isLoading }
+      profile: {
+        user: { avatar_url, name, blog, bio, html_url },
+        isLoading,
+        followers,
+        repos
+      },
+      searchRequested
     } = this.props;
 
     if (isLoading) {
@@ -18,14 +27,36 @@ class UserProfile extends Component {
     }
 
     return (
-      <div>
-        <a href={html_url} target="_blank" className="search-results">
-          <img src={avatar_url} width="300" />
-          <h1>{username}</h1>
-        </a>
-        <h2>{name}</h2>
-        {bio ? <p>{bio}</p> : null}
-        {blog ? <p>{blog}</p> : null}
+      <div className="user-profile">
+        <Header searchRequested={searchRequested} />
+        <div className="user-profile__container">
+          <img src={avatar_url} width="300" className="user-profile__avatar" />
+          <div className="user-profile__info">
+            <h1>{name}</h1>
+            <h2 className="heading-3">
+              <span className="user-profile__username">
+                {username} | {""}
+              </span>
+              <a href={html_url} target="_blank" className="user-profile__item">
+                {html_url}
+              </a>
+            </h2>
+            {bio ? <p>Bio: {bio}</p> : null}
+            {blog ? <p>Website: {blog}</p> : null}
+          </div>
+          <div>
+            <h2>Followers:</h2>
+            {followers.map((follower, i) => {
+              return <img src={follower.avatar_url} key={i} width="80" />;
+            })}
+          </div>
+          <div>
+            <h2>Repos:</h2>
+            {repos.map((repo, i) => {
+              return <h3>{repo.name}</h3>;
+            })}
+          </div>
+        </div>
       </div>
     );
   }

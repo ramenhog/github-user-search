@@ -39,28 +39,33 @@ class SearchResults extends Component {
     return (
       <div className="search-results">
         <Header searchRequested={searchRequested} />
-        <h1>Search Results:</h1>
-        <div className="search-results__container">
-          {results.map((result, i) => (
-            <Link
-              to={`/user/${result.login}`}
-              className="search-results__item"
-              key={i}
-            >
-              <img
-                className="search-results__avatar"
-                src={result.avatar_url}
-                alt={result.login}
-              />
-              <h2>{result.login}</h2>
-            </Link>
-          ))}
+        <div className="container container--results">
+          <h1 className="search-results__header">Search Results:</h1>
+          <p>
+            {totalResults} users found for <strong>{searchQuery}</strong>
+          </p>
+          <div className="search-results__items">
+            {results.map((result, i) => (
+              <Link
+                to={`/user/${result.login}`}
+                className="search-results__item"
+                key={i}
+              >
+                <img
+                  className="search-results__avatar"
+                  src={result.avatar_url}
+                  alt={result.login}
+                />
+                <h2 className="heading-4">{result.login}</h2>
+              </Link>
+            ))}
+          </div>
+          <Pagination
+            rootUrl={paginationUrl}
+            currentPage={page}
+            totalResults={totalResults}
+          />
         </div>
-        <Pagination
-          rootUrl={paginationUrl}
-          currentPage={page}
-          totalResults={totalResults}
-        />
       </div>
     );
   }

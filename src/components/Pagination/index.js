@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Pagination.scss";
 
 const Pagination = props => {
   const { currentPage, rootUrl, totalResults } = props;
@@ -9,17 +10,32 @@ const Pagination = props => {
   const lastPage = Math.ceil(totalResults / 50);
 
   return (
-    <div>
+    <div className="pagination">
       {prevPage > 0 ? (
-        <span>
-          <Link to={`${rootUrl}&page=${firstPage}`}> First </Link>
-          <Link to={`${rootUrl}&page=${prevPage}`}> Previous </Link>
+        <span className="pagination__previous">
+          <Link
+            className="pagination__item"
+            to={`${rootUrl}&page=${firstPage}`}
+          >
+            {" "}
+            First{" "}
+          </Link>
+          <Link className="pagination__item" to={`${rootUrl}&page=${prevPage}`}>
+            {" "}
+            Previous{" "}
+          </Link>
         </span>
       ) : null}
       {lastPage >= nextPage ? (
-        <span>
-          <Link to={`${rootUrl}&page=${nextPage}`}> Next </Link>
-          <Link to={`${rootUrl}&page=${lastPage}`}> Last </Link>
+        <span className="pagination__next">
+          <Link className="pagination__item" to={`${rootUrl}&page=${nextPage}`}>
+            {" "}
+            Next{" "}
+          </Link>
+          <Link className="pagination__item" to={`${rootUrl}&page=${lastPage}`}>
+            {" "}
+            Last{" "}
+          </Link>
         </span>
       ) : null}
     </div>

@@ -1,0 +1,29 @@
+.user-profile {
+  &__container {
+    padding: 32px;
+    margin: 0 auto;
+    max-width: 960px;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  &__username {
+    color: #828282;
+    grid-row: 1 / 2 ;
+  }
+
+  &__avatar {
+    width: 200px;
+    border-radius: 50%;
+    margin-bottom: 16px;
+  }
+
+  &__info {
+    grid-column: 2 / -1;
+    grid-row: 1 / 2 ;
+    align-self: center;
+    padding-bottom: 32px;
+    border-bottom: 1px solid #ddd;
+  }
+}

@@ -1,9 +1,14 @@
 @import '../../styles/variables';
 
 .header {
-  align-items: center;
-  justify-content: space-between;
-  display: flex;
-  padding: 16px 24px;
+  background: #FFF;
   border-bottom: 1px solid $light-gray;
+
+  &__container {
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    max-width: 1300px;
+    padding: 16px 24px;
+  }
 }

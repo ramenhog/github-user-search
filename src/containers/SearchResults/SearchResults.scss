@@ -1,12 +1,39 @@
-.search-results {
-  &__container {
-    display: grid;
+@import '../../styles/variables';
 
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+.search-results {
+  &__items {
+    display: grid;
+    margin: 24px 0;
+
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-gap: 32px;
+  }
+
+  &__header {
+    grid-column: 1 / -1;
+  }
+
+  &__item {
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+    padding: 24px 16px;
+    text-align: center;
+    word-wrap: break-word;
+    word-break: break-all;
+    background: #FFF;
+    border: 1px solid $light-gray;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
   &__avatar {
     display: block;
-    width: 100px;
+    width: 150px;
+    margin-bottom: 16px;
+    border-radius: 50%;
   }
 }

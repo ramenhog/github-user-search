@@ -1,6 +1,8 @@
 const initialState = {
   user: [],
-  isLoading: false
+  isLoading: false,
+  repos: [],
+  followers: []
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -16,6 +18,22 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         user,
+        isLoading: false
+      };
+    }
+    case "FOLLOWERS_REQUEST_SUCCESS": {
+      const { followers } = action.data;
+      return {
+        ...state,
+        followers,
+        isLoading: false
+      };
+    }
+    case "REPO_REQUEST_SUCCESS": {
+      const { repos } = action.data;
+      return {
+        ...state,
+        repos,
         isLoading: false
       };
     }

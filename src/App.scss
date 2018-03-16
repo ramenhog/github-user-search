@@ -1,4 +1,6 @@
 @import './styles/typography';
+@import './styles/mixins';
+@import './styles/buttons';
 
 :root {
   --step-up-5: 2em;
@@ -13,14 +15,22 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Yantramanav', sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   -webkit-font-smoothing: antialiased;
+  color: #333;
+  background-color: #F0F2F3;
 }
 
 .container {
   padding: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
 
   &--landing {
     text-align: center;
   }
+}
+
+.visually-hidden {
+  @include visuallyHidden;
 }
