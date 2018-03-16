@@ -28,19 +28,6 @@ body {
   font-size: large;
 }
 
-.search-results {
-  &__container {
-    display: grid;
-
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  }
-
-  &__avatar {
-    display: block;
-    width: 100px;
-  }
-}
-
 @keyframes app-logo-spin {
   from {
     transform: rotate(0deg);
