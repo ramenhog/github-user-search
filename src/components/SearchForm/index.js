@@ -3,7 +3,7 @@ import { Field, reduxForm } from "redux-form";
 import "./SearchForm.scss";
 
 let SearchForm = props => {
-  const { searchQuery = "", handleSubmit } = props;
+  const { handleSubmit } = props;
   return (
     <form className="search-form" onSubmit={handleSubmit}>
       <Field

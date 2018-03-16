@@ -14,7 +14,7 @@ class UserProfile extends Component {
     const {
       match: { params: { username } },
       profile: {
-        user: { avatar_url, name, blog, bio, html_url },
+        user: { avatar_url, name, blog, bio, html_url, public_repos },
         isLoading,
         followers,
         repos
@@ -43,6 +43,7 @@ class UserProfile extends Component {
             </h2>
             {bio ? <p>Bio: {bio}</p> : null}
             {blog ? <p>Website: {blog}</p> : null}
+            <p>Repos: {public_repos}</p>
           </div>
           <div>
             <h2>Followers:</h2>
@@ -56,6 +57,9 @@ class UserProfile extends Component {
               return (
                 <div key={i}>
                   <h3>{repo.name}</h3>
+                  <p>{repo.description}</p>
+                  <p>Stargazers Count: {repo.stargazers_count}</p>
+                  <p>Forks Count: {repo.forks_count}</p>
                 </div>
               );
             })}

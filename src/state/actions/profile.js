@@ -35,7 +35,7 @@ export const followersRequest = followersUrl => {
     dispatch({
       type: "FOLLOWERS_REQUEST"
     });
-    axios.get(followersUrl).then(({ data: followers }) => {
+    axios.get(`${followersUrl}`).then(({ data: followers }) => {
       dispatch(followersRequestSucceeded(followers));
     });
   };
@@ -55,7 +55,7 @@ export const repoRequest = url => {
     dispatch({
       type: "REPO_REQUEST"
     });
-    axios.get(url).then(({ data: repos }) => {
+    axios.get(`${url}`).then(({ data: repos }) => {
       dispatch(repoRequestSucceeded(repos));
     });
   };
