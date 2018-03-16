@@ -1,12 +1,12 @@
 import { combineReducers } from "redux";
 import search from "./search";
-import user from "./user";
+import profile from "./profile";
 import { reducer as form } from "redux-form";
 
 const rootReducer = combineReducers({
   form,
   search,
-  user
+  profile
 });
 
 export default rootReducer;
