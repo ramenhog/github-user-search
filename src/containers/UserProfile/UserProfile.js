@@ -7,11 +7,15 @@ class UserProfile extends Component {
     userRequested(username);
   }
 
-  render() {
+  renderProfile() {
     const {
       match: { params: { username } },
-      user: { avatar_url, name, blog, bio, html_url }
+      profile: { user: { avatar_url, name, blog, bio, html_url }, isLoading }
     } = this.props;
+
+    if (isLoading) {
+      return <h1>Loading user profile...</h1>;
+    }
 
     return (
       <div>
@@ -24,6 +28,10 @@ class UserProfile extends Component {
         {blog ? <p>{blog}</p> : null}
       </div>
     );
+  }
+
+  render() {
+    return <div>{this.renderProfile()}</div>;
   }
 }
 

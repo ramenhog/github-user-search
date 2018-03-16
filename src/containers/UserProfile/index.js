@@ -1,12 +1,12 @@
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import * as actions from "../../state/actions/user";
+import * as actions from "../../state/actions/profile";
 import UserProfile from "./UserProfile";
 
 const mapStateToProps = state => {
-  const { user } = state;
+  const { profile } = state;
   return {
-    user
+    profile
   };
 };
 
