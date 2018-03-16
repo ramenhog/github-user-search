@@ -31,13 +31,14 @@ class SearchResults extends Component {
 
   render() {
     const {
-      search: { results = [], page, searchQuery, totalResults }
+      search: { results = [], page, searchQuery, totalResults },
+      searchRequested
     } = this.props;
     const paginationUrl = `/results?q=${searchQuery}`;
 
     return (
       <div className="search-results">
-        <Header />
+        <Header searchRequested={searchRequested} />
         <h1>Search Results:</h1>
         <div className="search-results__container">
           {results.map((result, i) => (

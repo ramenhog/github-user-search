@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { Field, reduxForm } from "redux-form";
 import * as actions from "../../state/actions/search";
 import SearchForm from "../../components/SearchForm";
 
@@ -12,6 +11,7 @@ const Search = props => {
     const { search: searchQuery } = values;
     searchRequested(searchQuery, page);
   };
+
   return (
     <div className="container container--landing">
       <h1>GitHub User Search</h1>
